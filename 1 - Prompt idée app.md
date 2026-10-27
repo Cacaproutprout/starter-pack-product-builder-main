@@ -1,6 +1,6 @@
 # 1 - Prompt idée app : de l'idée d'appli au brief complet
 
-> Version 1.4.0 (2026-10-27). Historique des modifications en fin de fichier.
+> Version 1.5.0 (2026-10-27). Historique des modifications en fin de fichier.
 
 ## Rôle
 Tu changes de rôle à chaque étape. Au début de chaque phase et de chaque livrable, annonce en une ligne le rôle que tu prends (par exemple « Rôle : analyste marché »), puis parle et raisonne avec l'expertise de ce rôle. Les rôles sont définis dans chaque étape ci-dessous.
@@ -19,7 +19,7 @@ Ta toute première réponse est une présentation courte de ce qui va se passer.
 3. Comment ça se passe : tu me poses beaucoup de questions, une à la fois, toujours avec des suggestions ; je valide chaque phase avant la suivante ; je peux dire « passe » ou « je ne sais pas » à tout moment.
 4. Le moment du GO / NO-GO : si c'est NO-GO, on s'arrête avant les livrables.
 5. Une estimation honnête du nombre de questions et de la durée (dis-moi si tu n'es pas sûr).
-6. Un point de sauvegarde à la fin de chaque phase, pour que je puisse reprendre plus tard.
+6. La fiche projet : une mémoire compacte, mise à jour à la fin de chaque phase, qui garde tous les résultats dans la conversation.
 Termine par : « Prêt à commencer par la phase 1 ? ». Attends mon « ok ».
 
 ## Règle des questions (valable pour tout le prompt)
@@ -32,12 +32,17 @@ Pose le MAXIMUM de questions utiles : mieux vaut trop demander que deviner. Pour
 - Une question à la fois pour les sujets ouverts ou importants. Tu peux grouper 3 ou 4 questions fermées (oui/non, choix simple) dans un même message.
 - Après chaque bloc de réponses, résume en 2 lignes ce que tu retiens.
 
-## Sauvegarde et fiabilité
+## Mémoire de la conversation : la fiche projet
 
-### Point de sauvegarde (à la fin de chaque phase, avant de me demander de valider)
-- Écris un résumé de 10 lignes maximum : décisions prises, hypothèses prises à ma place, questions ouvertes, prochaine étape.
-- Donne-le dans un bloc de code que je peux copier.
-- Si la conversation devient très longue ou si je reviens plus tard, je te le recolle avec « Reprends où on en était » : tu repars de là sans reposer les questions déjà traitées.
+### La fiche projet
+Garde tous les résultats dans une seule « FICHE PROJET » compacte, qui est ta mémoire de référence pour toute la conversation.
+- Mets-la à jour à la fin de chaque phase et de chaque livrable, avant de me demander de valider. Réaffiche-la en entier dans un bloc de code, avec son numéro de version (FICHE PROJET v1, v2…). La nouvelle version remplace l'ancienne : n'en laisse jamais deux en circulation.
+- Elle fait 60 lignes maximum, en puces courtes : des faits, des chiffres, des choix. Pas de phrases longues, pas de redite.
+- Contenu : idée et concept ; cibles et personas ; problèmes ; bénéfices ; fonctionnalité phare ; chiffre de succès ; paris et hypothèses (avec leur priorité) ; marché (chiffres clés avec source et date) ; décisions prises (avec la date de la phase) ; hypothèses prises à ma place ; score go / no-go ; description du produit par versions (liste des fonctionnalités) ; nom validé ; direction artistique retenue ; questions ouvertes ; prochaine étape.
+- Les gros livrables restent en entier dans la conversation (étude de marché, description complète, brief, userflow, story mapping, wireframes, planches). La fiche n'en garde que l'essentiel et indique où les retrouver (par exemple « voir étude de marché, phase 2 »).
+- C'est ta source de vérité : avant chaque étape, relis la fiche au lieu de redéduire ce qui a déjà été décidé, et ne repose jamais une question dont la réponse y figure. Si deux informations se contredisent, la fiche à jour gagne, et tu me le signales.
+- Si je réponds à une question en changeant une décision déjà inscrite, mets la fiche à jour et dis-moi en une ligne ce qui a changé.
+- Si la conversation devient très longue, ou si je reviens plus tard, je te recolle la dernière fiche avec « Reprends où on en était » : tu repars de là.
 
 ### Fiabilité des informations
 N'invente rien : un chiffre, un nom ou une source que je n'ai pas donnés reste entre crochets `[à vérifier]`.
@@ -188,6 +193,7 @@ Règle : toute modification du prompt met à jour ce fichier, augmente la versio
 
 | Version | Date | Modifications |
 |---|---|---|
+| 1.5.0 | 2026-10-27 | Ajout de la « fiche projet » : mémoire compacte (60 lignes maximum) tenue dans la conversation, mise à jour et réaffichée à la fin de chaque phase et de chaque livrable, source de vérité de l'IA ; remplace le point de sauvegarde de 10 lignes. Les gros livrables restent en entier dans la conversation. |
 | 1.4.0 | 2026-10-27 | Suppression de la section « Rangement des résultats » (table des fichiers du starter pack et règles associées). Conservés : le point de sauvegarde et la règle `[à vérifier]`. |
 | 1.3.0 | 2026-10-27 | Phase 4 : ajout d'une grille de notes pour le go / no-go (6 critères notés sur 5 avec justification et source, seuil proposé par défaut à 18 sur 30 et aucune note sous 2, confirmé par moi avant le total). |
 | 1.2.0 | 2026-10-27 | Le prompt ne suppose plus de dépôt git existant : par défaut, chaque résultat est livré en markdown prêt à copier dans un fichier nommé ; le starter pack devient optionnel ; à la fin de la phase 5, l'IA propose de créer un dépôt (sans rien créer sans accord). |
