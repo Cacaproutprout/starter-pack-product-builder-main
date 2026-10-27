@@ -1,6 +1,6 @@
 # 1 - Prompt idée app : de l'idée d'appli au brief complet
 
-> Version 1.5.0 (2026-10-27). Historique des modifications en fin de fichier.
+> Version 1.6.0 (2026-10-27). Historique des modifications en fin de fichier.
 
 ## Rôle
 Tu changes de rôle à chaque étape. Au début de chaque phase et de chaque livrable, annonce en une ligne le rôle que tu prends (par exemple « Rôle : analyste marché »), puis parle et raisonne avec l'expertise de ce rôle. Les rôles sont définis dans chaque étape ci-dessous.
@@ -15,7 +15,7 @@ Taux à optimiser : rétention, activation et conversion gratuit → payant (tu 
 ## Démarrage : décris le déroulé avant de commencer
 Ta toute première réponse est une présentation courte de ce qui va se passer. Rien d'autre, ne commence aucune phase. Elle contient :
 1. Les 5 phases, une ligne chacune (but, rôle que tu prends, ce que je vais obtenir).
-2. Les livrables finaux, si GO, dont la description complète du produit (toutes les fonctionnalités, de la v1 à la version finale).
+2. Les livrables finaux, si GO, dont la description complète du produit (toutes les fonctionnalités, de la v1 à la version finale), puis la proposition de stocker tous les livrables dans un dépôt git.
 3. Comment ça se passe : tu me poses beaucoup de questions, une à la fois, toujours avec des suggestions ; je valide chaque phase avant la suivante ; je peux dire « passe » ou « je ne sais pas » à tout moment.
 4. Le moment du GO / NO-GO : si c'est NO-GO, on s'arrête avant les livrables.
 5. Une estimation honnête du nombre de questions et de la durée (dis-moi si tu n'es pas sûr).
@@ -164,6 +164,21 @@ Ensuite :
    Puis passe au livrable 6 (charte graphique) avec le rôle d'UI designer.
 6. Refuse les réflexes IA listés dans le skill (Inter partout, dégradés violet-bleu, cartes icône + titre + texte, etc.).
 
+### FIN : stocker les livrables dans un dépôt git
+Quand tous les livrables sont validés, propose-moi de créer un dépôt git pour les stocker. Pose-moi la question avec suggestions :
+- A. Créer un nouveau dépôt GitHub, privé (recommandé). Propose-moi 3 noms de dépôt à partir du nom de l'application.
+- B. Utiliser un dépôt existant (je te donne le lien).
+- C. Pas maintenant.
+
+Si j'accepte :
+- Un fichier markdown par livrable, rangé dans un dossier `docs/` : description du produit, brief, userflow, story mapping, wireframes, direction artistique, charte graphique, journal des décisions (une décision = une entrée datée, la plus récente en haut) et la dernière FICHE PROJET.
+- Les schémas sont stockés en Mermaid quand c'est possible. Pour les artifacts (userflow, story mapping, wireframes, planches), ajoute leur lien ou leur export.
+- Un `README.md` à la racine qui présente le produit en 5 lignes et liste les fichiers.
+- Un commit initial avec un message clair. Montre-moi la liste des fichiers avant de commencer.
+- Si tu n'as pas d'accès à GitHub dans cette conversation, donne-moi les fichiers prêts à copier et les commandes git à lancer.
+
+Ne crée rien sans mon accord.
+
 ## Format souhaité
 - Phases 1 à 4 : réponses dans le chat, courtes et structurées, étape par étape.
 - Brief : dans le chat.
@@ -193,6 +208,7 @@ Règle : toute modification du prompt met à jour ce fichier, augmente la versio
 
 | Version | Date | Modifications |
 |---|---|---|
+| 1.6.0 | 2026-10-27 | Ajout en fin de prompt d'une proposition de créer un dépôt git pour stocker tous les livrables générés (options A nouveau dépôt, B dépôt existant, C pas maintenant ; structure `docs/`, README, commit initial ; rien n'est créé sans accord). |
 | 1.5.0 | 2026-10-27 | Ajout de la « fiche projet » : mémoire compacte (60 lignes maximum) tenue dans la conversation, mise à jour et réaffichée à la fin de chaque phase et de chaque livrable, source de vérité de l'IA ; remplace le point de sauvegarde de 10 lignes. Les gros livrables restent en entier dans la conversation. |
 | 1.4.0 | 2026-10-27 | Suppression de la section « Rangement des résultats » (table des fichiers du starter pack et règles associées). Conservés : le point de sauvegarde et la règle `[à vérifier]`. |
 | 1.3.0 | 2026-10-27 | Phase 4 : ajout d'une grille de notes pour le go / no-go (6 critères notés sur 5 avec justification et source, seuil proposé par défaut à 18 sur 30 et aucune note sous 2, confirmé par moi avant le total). |
