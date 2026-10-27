@@ -1,6 +1,6 @@
 # 1 - Prompt idée app : de l'idée d'appli au brief complet
 
-> Version 1.2.0 (2026-10-27). Historique des modifications en fin de fichier.
+> Version 1.3.0 (2026-10-27). Historique des modifications en fin de fichier.
 
 ## Rôle
 Tu changes de rôle à chaque étape. Au début de chaque phase et de chaque livrable, annonce en une ligne le rôle que tu prends (par exemple « Rôle : analyste marché »), puis parle et raisonne avec l'expertise de ce rôle. Les rôles sont définis dans chaque étape ci-dessous.
@@ -107,8 +107,17 @@ Propose aussi une première feuille de route par versions (v1 MVP, v2, v3, et au
 ### PHASE 4 : Décision GO / NO-GO
 Rôles : investisseur / partenaire d'amorçage honnête (qui dit non quand c'est non) ET avocat du diable.
 Avant de conclure, pose-moi 3 questions avec suggestions : mon seuil d'abandon (budget et temps maximum acceptables), ce qui me ferait dire « j'arrête », ce qui me ferait dire « je continue ».
-Procède ensuite en 2 temps : d'abord, en avocat du diable, donne les 3 meilleurs arguments contre le projet. Ensuite, en investisseur honnête, donne ta préconisation en tenant compte de ces arguments.
-Donne ta préconisation claire (continuer, pivoter ou abandonner) avec les 3 raisons principales. Attends ma décision.
+Procède ensuite en 3 temps :
+1. Avocat du diable : donne les 3 meilleurs arguments contre le projet.
+2. Grille de notes : note le projet de 1 à 5 sur ces 6 critères, avec une phrase de justification et la source (phase 1 ou 2) pour chaque note. Si une note repose sur une hypothèse, dis-le.
+   - Besoin : les utilisateurs ont-ils vraiment ce problème, et assez fort ?
+   - Marché : le marché est-il assez grand et en croissance ?
+   - Concurrence : y a-t-il de la place pour une offre différente ?
+   - Faisabilité : puis-je le construire avec mes moyens (temps, budget, compétences) ?
+   - Revenus : le modèle économique peut-il couvrir les coûts ?
+   - Motivation : ai-je envie de porter ce projet dans la durée ?
+   Propose-moi un seuil (par défaut 18 sur 30, et aucune note en dessous de 2) et demande-moi de le confirmer ou de le changer avant d'afficher le total. Présente la grille dans un tableau : critère, note, justification.
+3. Investisseur honnête : donne ta préconisation claire (continuer, pivoter ou abandonner) en tenant compte des arguments et de la grille, avec les 3 raisons principales. La grille aide à décider mais ne décide pas à ma place. Attends ma décision.
 
 ### PHASE 5 : Livrables (uniquement si GO)
 Un rôle par livrable. Annonce le rôle avant chaque livrable. Avant chacun, pose-moi les questions de sa liste (avec suggestions), puis produis le livrable.
@@ -198,6 +207,7 @@ Règle : toute modification du prompt met à jour ce fichier, augmente la versio
 
 | Version | Date | Modifications |
 |---|---|---|
+| 1.3.0 | 2026-10-27 | Phase 4 : ajout d'une grille de notes pour le go / no-go (6 critères notés sur 5 avec justification et source, seuil proposé par défaut à 18 sur 30 et aucune note sous 2, confirmé par moi avant le total). |
 | 1.2.0 | 2026-10-27 | Le prompt ne suppose plus de dépôt git existant : par défaut, chaque résultat est livré en markdown prêt à copier dans un fichier nommé ; le starter pack devient optionnel ; à la fin de la phase 5, l'IA propose de créer un dépôt (sans rien créer sans accord). |
 | 1.1.0 | 2026-10-27 | Ajout de la section « Sauvegarde et fichiers du starter pack » : point de sauvegarde de 10 lignes à la fin de chaque phase (reprise possible) et rangement des résultats dans les 7 fichiers du starter pack (discovery, PRODUCT, DESIGN, parcours, AGENTS, now, decisions) avec ses règles (`[à vérifier]`, journal de décisions en ajout seul). |
 | 1.0.0 | 2026-10-27 | Première version versionnée : démarrage avec description du déroulé, règle des questions avec suggestions, 5 phases avec un rôle par étape, avocat du diable en phase 4, livrables 0 (description complète par version), 0 bis (nom avec recherche de disponibilité), brief, userflow à couloirs, story mapping par version, wireframes, direction artistique (jusqu'à 10 planches, skill impeccable), charte graphique (UI designer). |
