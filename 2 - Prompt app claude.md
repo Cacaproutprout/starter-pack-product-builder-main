@@ -1,6 +1,6 @@
 # 2 - Prompt app claude : choix des technologies, bonnes pratiques et plan de développement
 
-> Version 1.1.0 (2026-10-27). Historique des modifications en fin de fichier.
+> Version 1.1.1 (2026-10-27). Historique des modifications en fin de fichier.
 
 > Ce prompt s'exécute avec les livrables du prompt « 1 - Prompt idée app » : **il n'y a rien à remplir**.
 > Claude Code lit ces livrables dans le dépôt, choisit la stack, applique les bonnes pratiques et produit le plan de développement.
@@ -38,7 +38,7 @@ Le produit est déjà conçu. Ne me demande pas de le redécrire : lis-le.
 - **Source de vérité = fichiers du repo (`/docs`)**, pas la conversation. À chaque démarrage : relis `/docs`, y compris les livrables du prompt 1.
 - **Ne redéfinis pas le produit** : les décisions produit (cibles, fonctionnalités, versions, nom, DA) viennent du prompt 1. Si une contrainte technique ou légale les remet en cause, dis-le et propose une alternative, sans modifier seul.
 - Mets à jour `/docs` à **chaque décision, changement ou blocage résolu**.
-- **Un seul journal des décisions** : réutilise celui créé par le prompt 1 (une décision = une entrée datée, la plus récente en haut), n'en crée pas un second. `DECISIONS.md` ci-dessous désigne ce journal.
+- **Un seul journal des décisions** : réutilise celui créé par le prompt 1 ou par le prompt 3 (`docs/decisions.md`, format DEC-xx : une décision = une entrée datée, la plus récente en haut), n'en crée pas un second. `DECISIONS.md` ci-dessous désigne ce journal. Si les fichiers du starter pack existent (`AGENTS.md`, `docs/now.md`…), tiens-les à jour selon le contrat de maintenance d'`AGENTS.md` : stack et commandes dans `AGENTS.md`, backlog dans `docs/now.md` (qui renvoie vers `docs/PLAN_DEVELOPPEMENT.md`).
 - **Si tu n'es pas sûr d'une info** (version, prix, compatibilité, obligation légale) : dis-le explicitement et vérifie via recherche web avant de recommander.
 - **Challenge mes hypothèses.** Si une demande est floue, hors MVP ou risquée : dis-le.
 - Réponses courtes, concrètes, étape par étape. Pas de pavés théoriques.
@@ -243,5 +243,6 @@ Règle : toute modification du prompt met à jour ce fichier, augmente la versio
 
 | Version | Date | Modifications |
 |---|---|---|
+| 1.1.1 | 2026-10-27 | Cohérence avec le prompt 3 : le journal des décisions unique est `docs/decisions.md` (format DEC-xx) ; si les fichiers du starter pack existent, ils sont tenus à jour selon le contrat de maintenance d'`AGENTS.md`. |
 | 1.1.0 | 2026-10-27 | Le prompt s'exécute avec les livrables du prompt 1 : plus rien à remplir. Section 1 remplacée par la lecture de `docs/` (récapitulatif d'entrée, ordre de priorité en cas de contradiction, comportement si des livrables manquent) ; questions de la phase 0 limitées à ce qui manque ; plan de développement structuré par les versions v1 → finale du prompt 1 (v1 détaillée, versions suivantes en épopées) avec table de correspondance fonctionnalité → version → jalon → écran ; journal des décisions unique partagé avec le prompt 1 ; charte graphique et wireframes dans la définition de « terminé ». |
 | 1.0.0 | 2026-10-27 | Première version : reprise du prompt base Claude Code, réécrit pour que Claude Code choisisse les technologies (phase 1) et applique les bonnes pratiques (tests automatisés, pull requests, sécurité, RGPD, CI/CD, accessibilité, observabilité, documentation), avec un plan de développement par jalons (phase 3) avant le développement (phase 4). |
