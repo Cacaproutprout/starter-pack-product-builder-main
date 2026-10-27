@@ -1,29 +1,44 @@
 # 2 - Prompt app claude : choix des technologies, bonnes pratiques et plan de développement
 
-> Version 1.0.0 (2026-10-27). Historique des modifications en fin de fichier.
+> Version 1.1.0 (2026-10-27). Historique des modifications en fin de fichier.
 
-> Remplis uniquement la section **1. MON PRODUIT**, puis envoie tout à Claude Code.
-> Le reste du prompt est fixe : Claude Code choisit la stack et applique les bonnes pratiques.
+> Ce prompt s'exécute avec les livrables du prompt « 1 - Prompt idée app » : **il n'y a rien à remplir**.
+> Claude Code lit ces livrables dans le dépôt, choisit la stack, applique les bonnes pratiques et produit le plan de développement.
+> Pré-requis : les livrables du prompt 1 sont dans `docs/` du dépôt de travail (voir section 1).
 
 ---
 
-## 1. MON PRODUIT (à remplir)
+## 1. ENTRÉES : LIVRABLES DU PROMPT 1
 
-- **Nom / idée en une phrase** : [...]
-- **Utilisateurs cibles** : [...]
-- **Problème résolu** : [...]
-- **Fonctionnalités MVP (3 à 5 max)** : [...]
-- **Plus tard (v2+)** : [...]
-- **Plateforme** : [web / mobile / les deux / je ne sais pas]
-- **Contraintes connues** (budget, délai, outils imposés, données sensibles, API externes) : [...]
-- **Mon niveau technique / temps dispo** : [...]
+Le produit est déjà conçu. Ne me demande pas de le redécrire : lis-le.
+
+**Au démarrage, avant toute autre action :**
+1. Liste `docs/` (dépôt de travail) et repère les livrables du prompt 1, même si leurs noms diffèrent : identifie-les par leur contenu.
+2. Lis-les en entier. Ordre de priorité si deux informations se contredisent : **description complète du produit > brief > fiche projet > reste**. Signale-moi toute contradiction, sans trancher seul.
+3. Affiche un **récapitulatif d'entrée** (20 lignes max) : ce que tu as trouvé, ce que tu en retiens, ce qui manque.
+
+**Livrables attendus et ce que tu en tires :**
+
+| Livrable du prompt 1 | Ce que tu en tires |
+|---|---|
+| Description complète du produit (versions v1 → finale) | Périmètre : **v1 = MVP**, versions suivantes = v2+ ; critères de passage entre versions ; liste des fonctionnalités avec priorité et persona |
+| Brief produit | Vision, cibles, proposition de valeur, modèle économique, nom validé |
+| FICHE PROJET (dernière version) | Décisions prises, hypothèses à valider, plateforme, contraintes (budget, temps, compétences, RGPD), chiffres de succès, questions ouvertes |
+| Userflow, story mapping | Parcours et user stories à découper en tâches ; cas particuliers (erreur, premier lancement, abonnement) |
+| Wireframes | Liste des écrans, navigation, états à développer |
+| Direction artistique + charte graphique | Design tokens (couleurs, typo, espacements), composants, thème clair/sombre, niveau d'accessibilité |
+| Journal des décisions | Décisions déjà actées : ne les remets pas en cause sans me le dire |
+
+**Si des livrables manquent ou si `docs/` est vide :** liste ce qui manque, dis-moi lesquels sont bloquants, et propose : (A) relancer le prompt 1, (B) continuer avec des hypothèses que tu listes. Ne code rien tant que je n'ai pas choisi.
 
 ---
 
 ## 2. RÈGLES DE FONCTIONNEMENT
 
-- **Source de vérité = fichiers du repo (`/docs`)**, pas la conversation. À chaque démarrage : relis `/docs`.
+- **Source de vérité = fichiers du repo (`/docs`)**, pas la conversation. À chaque démarrage : relis `/docs`, y compris les livrables du prompt 1.
+- **Ne redéfinis pas le produit** : les décisions produit (cibles, fonctionnalités, versions, nom, DA) viennent du prompt 1. Si une contrainte technique ou légale les remet en cause, dis-le et propose une alternative, sans modifier seul.
 - Mets à jour `/docs` à **chaque décision, changement ou blocage résolu**.
+- **Un seul journal des décisions** : réutilise celui créé par le prompt 1 (une décision = une entrée datée, la plus récente en haut), n'en crée pas un second. `DECISIONS.md` ci-dessous désigne ce journal.
 - **Si tu n'es pas sûr d'une info** (version, prix, compatibilité, obligation légale) : dis-le explicitement et vérifie via recherche web avant de recommander.
 - **Challenge mes hypothèses.** Si une demande est floue, hors MVP ou risquée : dis-le.
 - Réponses courtes, concrètes, étape par étape. Pas de pavés théoriques.
@@ -32,16 +47,17 @@
 
 ## 3. PHASE 0 — QUESTIONS (avant toute proposition)
 
-Avant de proposer une stack, pose-moi **au maximum 8 questions** (une liste numérotée, courte) sur ce qui manque :
+Avant de proposer une stack, pose-moi **au maximum 8 questions** (une liste numérotée, courte), **uniquement sur ce que les livrables du prompt 1 ne disent pas**. Ne repose jamais une question dont la réponse est dans `docs/`.
 
-- périmètre MVP vs v2+
-- volumétrie attendue (utilisateurs, données)
+Sujets à vérifier d'abord dans les livrables, puis à demander seulement s'ils manquent :
+- volumétrie attendue (utilisateurs, données) : à déduire des critères de passage entre versions
 - données personnelles / sensibles (RGPD)
 - besoin hors-ligne, temps réel, notifications, paiement, IA
 - budget d'hébergement mensuel
 - compétences que je veux garder (ce que je sais maintenir)
 
-Attends mes réponses. Ne code rien à ce stade.
+Pour chaque question, donne 3 à 4 options avec ta recommandation, et accepte « je ne sais pas » (tu prends l'option recommandée et tu la notes comme hypothèse à valider).
+Si tout est déjà dans `docs/`, dis-le et passe à la phase 1 après mon « ok ». Ne code rien à ce stade.
 
 ---
 
@@ -49,9 +65,9 @@ Attends mes réponses. Ne code rien à ce stade.
 
 Pour **chaque couche utile** (frontend, backend, base de données, auth, hébergement, CI/CD, monitoring, tests, paiement/email/stockage si besoin) :
 
-1. Propose **2 à 3 options** réalistes.
+1. Propose **2 à 3 options** réalistes, adaptées à la plateforme, aux contraintes et au modèle économique des livrables du prompt 1.
 2. Compare-les dans un tableau court selon ces critères :
-   - adéquation au produit et au MVP
+   - adéquation au produit, au MVP (v1) et aux versions suivantes (pas de choix qui bloque la v2+)
    - maturité et activité de la communauté
    - coût (gratuit → à l'échelle)
    - simplicité de maintenance pour une personne seule
@@ -163,13 +179,17 @@ Applique et configure tout ce qui suit dans le projet (adapte à la stack choisi
 
 Une fois la stack validée, produis `docs/PLAN_DEVELOPPEMENT.md`, puis **attends ma validation**.
 
+Le plan se construit à partir de la description complète du produit : **le découpage en versions (v1, v2, v3…) du prompt 1 est la structure du plan**.
+
 Contenu attendu :
 
+0. **Correspondance avec le prompt 1** : tableau fonctionnalité → version → jalon(s) → écrans des wireframes. Aucune fonctionnalité de la v1 ne doit être oubliée, aucune fonctionnalité de v2+ ne doit s'infiltrer dans la v1.
 1. **Jalons (milestones)** dans l'ordre :
-   - J0 : socle (repo, CI, lint, tests, environnements, docs de base, sécurité de base)
-   - J1 : premier parcours utilisateur complet, même minimal (« walking skeleton » déployé en staging)
-   - J2+ : une fonctionnalité MVP par jalon
-   - J-final : durcissement (sécurité, RGPD, accessibilité, perf, sauvegardes) + mise en production
+   - J0 : socle (repo, CI, lint, tests, environnements, docs de base, sécurité de base, design tokens issus de la charte graphique)
+   - J1 : premier parcours utilisateur complet, même minimal (« walking skeleton » déployé en staging), tiré du userflow
+   - J2+ : une fonctionnalité de la v1 par jalon, par ordre de priorité du story mapping
+   - J-final de la v1 : durcissement (sécurité, RGPD, accessibilité, perf, sauvegardes) + mise en production
+   - Versions suivantes (v2, v3… jusqu'à la version finale) : jalons au niveau « épopée » seulement (objectif, fonctionnalités, critère de déclenchement repris du prompt 1, dépendances techniques à anticiper). Le détail tâche par tâche se fait quand la version est déclenchée.
 2. **Pour chaque jalon** :
    - objectif en 1 phrase
    - liste de tâches numérotées, petites (≤ 1/2 journée chacune)
@@ -198,7 +218,8 @@ Contenu attendu :
 ## 8. DÉFINITION DE « TERMINÉ »
 
 - [ ] Tous les jalons du plan livrés, critères d'acceptation validés
-- [ ] Fonctionnalités MVP livrées et testées
+- [ ] Fonctionnalités de la v1 (MVP) livrées et testées, conformes à la description du produit et aux wireframes
+- [ ] Interface conforme à la charte graphique
 - [ ] Tests unitaires, intégration et e2e verts en CI
 - [ ] Aucun secret dans le repo, audit dépendances propre
 - [ ] Checklist sécurité (5.4) et RGPD (5.5) cochée, points ouverts listés
@@ -207,6 +228,7 @@ Contenu attendu :
 - [ ] `/docs` complète et synchronisée
 - [ ] Historique Git lisible
 - [ ] Liste des points incertains ou à valider avec un juriste/expert
+- [ ] Plan de la version suivante (v2) préparé, avec son critère de déclenchement
 
 ---
 
@@ -221,4 +243,5 @@ Règle : toute modification du prompt met à jour ce fichier, augmente la versio
 
 | Version | Date | Modifications |
 |---|---|---|
+| 1.1.0 | 2026-10-27 | Le prompt s'exécute avec les livrables du prompt 1 : plus rien à remplir. Section 1 remplacée par la lecture de `docs/` (récapitulatif d'entrée, ordre de priorité en cas de contradiction, comportement si des livrables manquent) ; questions de la phase 0 limitées à ce qui manque ; plan de développement structuré par les versions v1 → finale du prompt 1 (v1 détaillée, versions suivantes en épopées) avec table de correspondance fonctionnalité → version → jalon → écran ; journal des décisions unique partagé avec le prompt 1 ; charte graphique et wireframes dans la définition de « terminé ». |
 | 1.0.0 | 2026-10-27 | Première version : reprise du prompt base Claude Code, réécrit pour que Claude Code choisisse les technologies (phase 1) et applique les bonnes pratiques (tests automatisés, pull requests, sécurité, RGPD, CI/CD, accessibilité, observabilité, documentation), avec un plan de développement par jalons (phase 3) avant le développement (phase 4). |
