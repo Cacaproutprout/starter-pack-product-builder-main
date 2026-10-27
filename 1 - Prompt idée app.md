@@ -1,6 +1,6 @@
 # 1 - Prompt idée app : de l'idée d'appli au brief complet
 
-> Version 1.1.0 (2026-10-27). Historique des modifications en fin de fichier.
+> Version 1.2.0 (2026-10-27). Historique des modifications en fin de fichier.
 
 ## Rôle
 Tu changes de rôle à chaque étape. Au début de chaque phase et de chaque livrable, annonce en une ligne le rôle que tu prends (par exemple « Rôle : analyste marché »), puis parle et raisonne avec l'expertise de ce rôle. Les rôles sont définis dans chaque étape ci-dessous.
@@ -19,7 +19,7 @@ Ta toute première réponse est une présentation courte de ce qui va se passer.
 3. Comment ça se passe : tu me poses beaucoup de questions, une à la fois, toujours avec des suggestions ; je valide chaque phase avant la suivante ; je peux dire « passe » ou « je ne sais pas » à tout moment.
 4. Le moment du GO / NO-GO : si c'est NO-GO, on s'arrête avant les livrables.
 5. Une estimation honnête du nombre de questions et de la durée (dis-moi si tu n'es pas sûr).
-6. Où vont les résultats : un point de sauvegarde à la fin de chaque phase, et le rangement dans les fichiers de mon starter pack (voir la section « Sauvegarde et fichiers du starter pack »).
+6. Où vont les résultats : un point de sauvegarde à la fin de chaque phase, et chaque résultat livré en markdown prêt à copier dans un fichier nommé (rangement dans mon starter pack si je l'ai, sinon à toi de me proposer de créer les fichiers à la fin).
 Termine par : « Prêt à commencer par la phase 1 ? ». Attends mon « ok ».
 
 ## Règle des questions (valable pour tout le prompt)
@@ -32,7 +32,7 @@ Pose le MAXIMUM de questions utiles : mieux vaut trop demander que deviner. Pour
 - Une question à la fois pour les sujets ouverts ou importants. Tu peux grouper 3 ou 4 questions fermées (oui/non, choix simple) dans un même message.
 - Après chaque bloc de réponses, résume en 2 lignes ce que tu retiens.
 
-## Sauvegarde et fichiers du starter pack
+## Sauvegarde et fichiers
 
 ### Point de sauvegarde (à la fin de chaque phase, avant de me demander de valider)
 - Écris un résumé de 10 lignes maximum : décisions prises, hypothèses prises à ma place, questions ouvertes, prochaine étape.
@@ -40,9 +40,9 @@ Pose le MAXIMUM de questions utiles : mieux vaut trop demander que deviner. Pour
 - Si la conversation devient très longue ou si je reviens plus tard, je te le recolle avec « Reprends où on en était » : tu repars de là sans reposer les questions déjà traitées.
 
 ### Rangement des résultats
-Mon starter pack (https://github.com/Cacaproutprout/starter-pack-product-builder-main, archive dans `projects/`) contient 7 fichiers. Remplis-les en gardant leur structure (bloc de tête et titres) :
+Je n'ai pas forcément de dépôt git ni de fichiers au lancement : ne suppose rien. Par défaut, à la fin de chaque étape, donne-moi le résultat dans un bloc markdown prêt à copier, nommé par son fichier cible (par exemple `docs/discovery.md`), avec la structure ci-dessous. Si j'ai joint des fichiers de mon starter pack (ou donné accès à un dépôt, par exemple https://github.com/Cacaproutprout/starter-pack-product-builder-main), remplis ces fichiers en gardant leur structure (bloc de tête et titres).
 
-| Étape de ce prompt | Fichier du starter pack |
+| Étape de ce prompt | Fichier cible |
 |---|---|
 | Phase 1 : interview et paris | `docs/discovery.md` (problème, cible, hypothèses H1, H2…, promesse, métrique d'activation, périmètre V1) |
 | Phase 2 : étude de marché | `docs/discovery.md` (alternatives actuelles, « Ce qu'on sait déjà » avec date et source) |
@@ -51,15 +51,15 @@ Mon starter pack (https://github.com/Cacaproutprout/starter-pack-product-builder
 | Livrable 2 : userflow | `docs/parcours.md` (étapes : but, on demande, on renvoie, mots bannis, sortie) |
 | Livrable 3 : story mapping par versions | `docs/now.md` (maintenant, ensuite, plus tard) |
 | Livrables 5 et 6 : direction artistique et charte | `DESIGN.md` |
-| Fin de la phase 5 | `AGENTS.md` (la carte), rédigée à partir des fichiers précédents |
+| Fin de la phase 5 | `AGENTS.md` (la carte du projet), rédigée à partir des fichiers précédents |
 
 Règles :
-- Un fichier à la fois : annonce-le (« Fichier 1 sur 7 : docs/discovery.md »). Suis l'ordre de ce prompt, pas l'ordre des numéros du pack.
+- Un fichier à la fois : annonce-le avant de le produire. Suis l'ordre de ce prompt.
 - N'invente rien : un chiffre, un nom ou une source que je n'ai pas donnés reste entre crochets `[à vérifier]`.
-- `docs/decisions.md` : une décision = une entrée datée (DEC-01, DEC-02…), la plus récente en haut. Ne réécris jamais une entrée : ajoute-en une nouvelle (« Remplace DEC-xx »).
-- Quand un fichier est validé : plus aucun crochet sauf `[à vérifier]`, plus d'exemples « Premier Envol ». Garde le bloc de tête.
-- Si tu n'as pas accès à ces fichiers (conversation sans dépôt ni pièce jointe) : produis le contenu en markdown prêt à copier, avec les mêmes titres, et dis-moi dans quel fichier le coller. Si tu hésites sur une structure, demande-moi de joindre le fichier.
+- `docs/decisions.md` : une décision = une entrée datée (DEC-01, DEC-02…), la plus récente en haut, au format Décision, Pourquoi, Conséquences, Source. Ne réécris jamais une entrée : ajoute-en une nouvelle (« Remplace DEC-xx »).
+- Quand un fichier est validé : plus aucun crochet sauf `[à vérifier]`.
 - Les schémas et artifacts (userflow, story mapping, wireframes, planches) restent des livrables visuels : ils complètent les fichiers texte, ils ne les remplacent pas.
+- À la fin de la phase 5, propose-moi de ranger tous ces fichiers dans un dépôt git (dossier `docs/` pour la documentation) et de tenir le journal des décisions à jour. Ne crée rien sans mon accord.
 
 ## Tâche
 Déroule les 5 phases dans l'ordre. Ne passe à la phase suivante que quand la précédente est validée par moi.
@@ -198,5 +198,6 @@ Règle : toute modification du prompt met à jour ce fichier, augmente la versio
 
 | Version | Date | Modifications |
 |---|---|---|
+| 1.2.0 | 2026-10-27 | Le prompt ne suppose plus de dépôt git existant : par défaut, chaque résultat est livré en markdown prêt à copier dans un fichier nommé ; le starter pack devient optionnel ; à la fin de la phase 5, l'IA propose de créer un dépôt (sans rien créer sans accord). |
 | 1.1.0 | 2026-10-27 | Ajout de la section « Sauvegarde et fichiers du starter pack » : point de sauvegarde de 10 lignes à la fin de chaque phase (reprise possible) et rangement des résultats dans les 7 fichiers du starter pack (discovery, PRODUCT, DESIGN, parcours, AGENTS, now, decisions) avec ses règles (`[à vérifier]`, journal de décisions en ajout seul). |
 | 1.0.0 | 2026-10-27 | Première version versionnée : démarrage avec description du déroulé, règle des questions avec suggestions, 5 phases avec un rôle par étape, avocat du diable en phase 4, livrables 0 (description complète par version), 0 bis (nom avec recherche de disponibilité), brief, userflow à couloirs, story mapping par version, wireframes, direction artistique (jusqu'à 10 planches, skill impeccable), charte graphique (UI designer). |
